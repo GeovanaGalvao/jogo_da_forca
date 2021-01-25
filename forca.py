@@ -19,12 +19,20 @@ def jogar():
         chute = obtem_chute_usuario()
 
         if not valida_letra_do_usuario(chute):
+            print("\n\n\t  Por favor siga as instruções\n\te digite apenas uma letra válida.")
+            time.sleep(4)
+            continue
+
+        if letra_ja_utilizada(chute, letras_usadas):
+            print("\n\tPor favor não utilize a mesma\t\n  mais de uma vez!")
+            time.sleep(4)
             continue
 
         letras_usadas.append(chute)
         if not verifica_chute_em_palavra_secreta(chute, palavra_secreta):
             erros += 1
             desenha_forca(erros)
+            print("\n\tVocê errou o seu chute!")
             time.sleep(3)
             continue
 
@@ -199,13 +207,13 @@ def preenche_advinhando_palavra(advinhando_palavra, palavra_secreta, chute):
         index += 1
 
 
+def letra_ja_utilizada(chute, advinhando_palavra):
+    if chute in advinhando_palavra:
+        return True
+
+
 def valida_letra_do_usuario(chute):
-    if len(chute) == 1 or not chute.isalpha():
-        # Validando se o que o usuario digitou é apenas uma letra do alfabeto.
-        print("\n\n\t  Por favor siga as instruções\n\te digite apenas uma letra válida.")
-        time.sleep(4)
-        return False
-    else:
+    if len(chute) == 1 and chute.isalpha():  # Validando se o que o usuario digitou é apenas uma letra do alfabeto.
         return True
 
 
@@ -214,9 +222,6 @@ def verifica_chute_em_palavra_secreta(chute, palavra_secreta):
         print("\n\tVocê acertou a letra {}".format(chute))
         time.sleep(3)
         return True
-    else:
-        print("\n\tVocê errou o seu chute!")
-        return False
 
 
 if __name__ == "__main__":
