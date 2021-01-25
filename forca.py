@@ -183,7 +183,7 @@ def gera_palavra_secreta(nome_arquivo="palavras.txt"):
             # Cada indice dentro da lista é uma palavra dentro do arquivo de texto.
 
         return palavras[random.randrange(0, len(palavras))]
-        # Escolhe um número aleatóriamente com o valor máximo da quantidade de linhas do arquivo de texto. Cada
+        # Escolhe um número aleatóriamente com base na quantidade de linhas do arquivo de texto. Cada
         # linha corresponde a uma palavra específica encontrada no arquivo, gerando assim a palavra secreta.
 
 
@@ -200,7 +200,7 @@ def preenche_advinhando_palavra(advinhando_palavra, palavra_secreta, chute):
 
 
 def valida_letra_do_usuario(chute):
-    if len(chute) in range(1) or not chute.isalpha():
+    if len(chute) == 1 or not chute.isalpha():
         # Validando se o que o usuario digitou é apenas uma letra do alfabeto.
         print("\n\n\t  Por favor siga as instruções\n\te digite apenas uma letra válida.")
         time.sleep(4)
